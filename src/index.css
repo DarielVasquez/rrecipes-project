@@ -1,0 +1,50 @@
+/* Variables */
+
+:root {
+  --darkTextColor: #3c3744;
+  --lightTextColor: #fbfff1;
+  --lightBlue: #b4c5e4;
+  --trueBlue: #3066be;
+  --darkBlue: #090c9b;
+}
+
+/* Global */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--lightTextColor);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+/* Navbar */
+
+.navbar {
+  background-color: var(--trueBlue);
+  height: 75px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar p {
+  color: var(--lightTextColor);
+}
