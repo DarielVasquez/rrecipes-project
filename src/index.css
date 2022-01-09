@@ -6,6 +6,10 @@
   --lightBlue: #b4c5e4;
   --trueBlue: #3066be;
   --darkBlue: #090c9b;
+  --rad: 0.7rem;
+  --dur: 0.3s;
+  --btn-width: 6rem;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
 }
 
 /* Global */
@@ -36,6 +40,14 @@ img {
   display: block;
 }
 
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 /* Navbar */
 
 .navbar {
@@ -45,6 +57,89 @@ img {
   align-items: center;
 }
 
-.navbar p {
+.center-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  text-transform: capitalize;
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  padding: 0.25rem 0.5rem;
   color: var(--lightTextColor);
+}
+
+.nav-links a:hover {
+  color: var(--lightBlue);
+}
+
+/* Search Bar */
+
+.search {
+  position: relative;
+  width: 50rem;
+  background: var(--lightBlue);
+  border-radius: var(--rad);
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+@media screen and (max-width: 992px) {
+  .search {
+    width: fit-content;
+  }
+}
+
+.search input,
+button {
+  height: 2.5rem;
+  border: 0;
+  color: var(--darkTextColor);
+  font-size: 1.2rem;
+}
+.search input[type="search"] {
+  width: 100%;
+  background: var(--lightTextColor);
+  padding: 0 1.6rem;
+  border-radius: var(--rad);
+  appearance: none;
+  transition: all var(--dur) var(--bez);
+  transition-property: width, border-radius;
+  z-index: 1;
+  position: relative;
+}
+.search button {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--btn-width);
+  font-weight: bold;
+  background: var(--lightBlue);
+  border-radius: 0 var(--rad) var(--rad) 0;
+}
+.search input:not(:placeholder-shown) {
+  border-radius: var(--rad) 0 0 var(--rad);
+  width: calc(100% - var(--btn-width));
+}
+.search label {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
 }
