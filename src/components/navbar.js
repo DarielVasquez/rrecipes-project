@@ -6,12 +6,12 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="center-navbar">
         <form role="search" className="search">
-          <label for="search">Search for stuff</label>
+          <label htmlFor="search">Search for stuff</label>
           <input
             id="search"
             type="search"
             placeholder="Search..."
-            autofocus
+            autoFocus
             required
           />
           <button type="submit">Go</button>
