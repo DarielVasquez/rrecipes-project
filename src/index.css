@@ -1,11 +1,13 @@
 /* Variables */
 
 :root {
-  --darkTextColor: #3c3744;
-  --lightTextColor: #fbfff1;
-  --lightBlue: #b4c5e4;
-  --trueBlue: #3066be;
-  --darkBlue: #090c9b;
+  --black: #000;
+  --white: #fff;
+  --lightTextColor: #f4f4f9;
+  --lightBlue: #b8dbd9;
+  --trueBlue: #586f7c;
+  --darkBlue: #2f4550;
+  --darkGreen: #182328;
   --rad: 0.7rem;
   --dur: 0.3s;
   --btn-width: 6rem;
@@ -27,7 +29,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--lightTextColor);
+  background-color: var(--lightBlue);
 }
 
 code {
@@ -106,7 +108,7 @@ a {
 button {
   height: 2.5rem;
   border: 0;
-  color: var(--darkTextColor);
+  color: var(--black);
   font-size: 1.2rem;
 }
 .search input[type="search"] {
@@ -151,17 +153,42 @@ button {
 }
 
 .appliances-center {
-  width: 85vw;
-  margin: 0 auto;
-  max-width: 1170px;
-  display: grid;
-  row-gap: 2rem;
-  column-gap: 2rem;
-  outline: auto;
+  margin: auto;
+  max-width: 70%;
 }
 
 @media screen and (min-width: 576px) {
   .appliances-center {
     grid-template-columns: repeat(auto-fill, minmax(338.8px, 1fr));
   }
+}
+
+/* Grid */
+
+.box {
+  background-color: var(--white);
+  color: var(--darkBlue);
+  text-transform: capitalize;
+  padding-bottom: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dish {
+  padding: 8px 15px;
+  text-transform: uppercase;
+  color: rgb(230, 74, 2);
+  font-weight: bold;
+}
+
+.box h2 {
+  text-align: center;
+  padding: 10px;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  grid-auto-flow: column;
 }

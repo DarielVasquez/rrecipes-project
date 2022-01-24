@@ -1,7 +1,9 @@
 import React, { useState, useContext, useEffect, useCallback } from "react";
 
 const url =
-  "https://api.spoonacular.com/recipes/complexSearch?apiKey=0d31116822b54414a5fe84f683d6d5d9";
+  "https://api.spoonacular.com/recipes/random?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=12";
+// const url =
+//   "https://api.spoonacular.com/recipes/complexSearch?apiKey=0d31116822b54414a5fe84f683d6d5d9";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
@@ -13,7 +15,8 @@ const AppProvider = ({ children }) => {
     try {
       const response = await fetch(`${url}`);
       const data = await response.json();
-      setRecipes(data);
+      const recipes = data.recipes;
+      setRecipes(recipes);
     } catch (error) {
       console.log(error);
     }
