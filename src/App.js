@@ -6,6 +6,7 @@ import Error from "./pages/Error";
 import About from "./pages/About";
 // Components
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/About" element={<About />}></Route>
         <Route exact path="*" element={<Error />}></Route>
       </Routes>
+      <Footer />
     </Router>
   );
 }
