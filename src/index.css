@@ -1,14 +1,12 @@
 /* Variables */
 
 :root {
-  --black: #000;
-  --white: #fff;
   --lightTextColor: #f4f4f9;
   --lightBlue: #b8dbd9;
   --trueBlue: #586f7c;
   --darkBlue: #2f4550;
   --darkGreen: #182328;
-  --red: #d64045;
+  --redTone: #d64045;
   --rad: 0.7rem;
   --dur: 0.3s;
   --btn-width: 6rem;
@@ -31,7 +29,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1em;
-  background-color: var(--lightBlue);
+  background: rgba(184, 219, 217, 0.4);
 }
 
 code {
@@ -113,7 +111,7 @@ a {
 button {
   height: 2.5rem;
   border: 0;
-  color: var(--black);
+  color: black;
   font-size: 1.2rem;
 }
 .search input[type="search"] {
@@ -154,7 +152,7 @@ button {
 /* Home */
 
 .container {
-  padding: 54px 0;
+  padding-top: 54px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -212,23 +210,35 @@ button {
 
 /* Grid */
 
+.wrapper {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(6, auto);
+  grid-auto-flow: column;
+}
+
 .box {
-  background-color: var(--white);
+  background-color: white;
   color: var(--darkBlue);
   text-transform: capitalize;
   padding-bottom: 15px;
   transition: outline 0.1s ease-in-out;
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  -webkit-transition: outline 0.1s ease-in-out;
+  -moz-transition: outline 0.1s ease-in-out;
 }
 
 .box:hover {
-  outline: 5px solid var(--red);
+  transform: translate(1px, 1px);
+  -moz-transform: translate(1px, 1px);
+  -webkit-transform: translate(1px, 1px);
+  outline: 5px solid var(--redTone);
 }
 
 .dish-types {
   padding: 8px 15px;
   text-transform: uppercase;
-  color: var(--red);
+  color: var(--redTone);
   font-weight: bold;
   font-size: 0.9em;
 }
@@ -236,14 +246,6 @@ button {
 .title-dish {
   text-align: center;
   padding: 5px;
-}
-
-.wrapper {
-  display: grid;
-  grid-gap: 15px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(6, auto);
-  grid-auto-flow: column;
 }
 
 @media screen and (max-width: 600px) {
@@ -271,3 +273,73 @@ button {
     font-size: 0.8em;
   }
 }
+
+/* Section No Calories */
+
+.section-low-calories-recipes {
+  margin-top: 10vh;
+  height: 60vh;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* animation: other 2s infinite ease-in-out; */
+}
+
+.section-low-calories-recipes div {
+  position: absolute;
+  text-align: center;
+  padding: 3vh;
+  background: violet;
+  /* animation: example 1s infinite ease-in-out; */
+}
+
+@keyframes other {
+  0% {
+    opacity: 0;
+    top: 0;
+  }
+  100% {
+    opacity: 1;
+    top: 5vh;
+  }
+}
+
+@keyframes example {
+  0% {
+    opacity: 0;
+    top: 0;
+  }
+  50% {
+    top: 10vh;
+  }
+  100% {
+    opacity: 1;
+    top: 5vh;
+  }
+}
+
+/* @-webkit-keyframes example {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes example {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+} */
