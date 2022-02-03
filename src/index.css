@@ -274,9 +274,9 @@ button {
   }
 }
 
-/* Section No Calories */
+/* Section Low Calorie Recipes */
 
-.section-low-calories-recipes {
+.section-low-calorie-recipes {
   margin-top: 10vh;
   height: 60vh;
   background: white;
@@ -287,12 +287,63 @@ button {
   /* animation: other 2s infinite ease-in-out; */
 }
 
-.section-low-calories-recipes div {
-  position: absolute;
-  text-align: center;
-  padding: 3vh;
-  background: violet;
+.section-low-calorie-recipes fieldset {
+  position: relative;
+  padding: 1vw;
+  border: 2px solid lightgray;
+  overflow: hidden;
   /* animation: example 1s infinite ease-in-out; */
+}
+
+.slider {
+  width: 95vw;
+  text-align: center;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 15px;
+}
+
+.slides::-webkit-scrollbar {
+  height: 10px;
+}
+.slides::-webkit-scrollbar-thumb {
+  background: lightgray;
+  border-radius: 10px;
+}
+.slides::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slides::-webkit-scrollbar-thumb:hover {
+  background: gray;
+}
+
+.slide {
+  color: var(--darkBlue);
+  text-transform: capitalize;
+  width: 46vh;
+  padding-bottom: 15px;
+
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  margin-right: 30px;
+  /* border-radius: 10px; */
+  background: var(--lightBlue);
+  position: relative;
+
+  /* transition: outline 0.1s ease-in-out;
+  -webkit-transition: outline 0.1s ease-in-out;
+  -moz-transition: outline 0.1s ease-in-out; */
+}
+
+.slide:last-child {
+  margin-right: 0px;
 }
 
 @keyframes other {
@@ -342,4 +393,8 @@ button {
   100% {
     opacity: 0;
   }
+} */
+
+/* @media screen and (max-width: 600px) {
+
 } */
