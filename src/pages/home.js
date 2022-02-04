@@ -2,15 +2,18 @@ import React from "react";
 import { useGlobalContext } from "../context";
 import preset from "../images/Cheese-Tortellini-011.jpg";
 import Preset from "../components/Preset";
+import RecipesList from "../components/RecipesList";
 
 const Home = () => {
   const {
-    recipes: { random, lowCalories },
+    recipes: { random, lowCalories, noSugar, wines },
     loading,
   } = useGlobalContext();
 
   console.log(random);
   console.log(lowCalories);
+  console.log(noSugar);
+  console.log(wines);
 
   if (loading) {
     return <div>loading...</div>;
@@ -90,7 +93,7 @@ const Home = () => {
           </div>
         </section>
       </div>
-      <section className="section-low-calorie-recipes">
+      <section className="section-recipe-slider">
         <fieldset>
           <legend>Low Calorie Recipes</legend>
           <div className="slider">
@@ -109,8 +112,43 @@ const Home = () => {
           </div>
         </fieldset>
       </section>
-      <section className="section-no-sugar-recipes"></section>
-      <section className="section-no-alcohol-recipes"></section>
+      <section className="section-recipe-slider">
+        <fieldset>
+          <legend>No Sugar Recipes</legend>
+          <div className="slider">
+            <div className="slides">
+              {noSugar.map((recipe) => {
+                const { id, title, image, sugar } = recipe;
+                return (
+                  <div key={id} className="slide">
+                    <img src={image} alt={title} style={{ width: "100%" }} />
+                    <h3 className="title-dish">{title}</h3>
+                    <span>Sugar: {sugar}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </fieldset>
+      </section>
+      <section className="section-recipe-slider">
+        <fieldset>
+          <legend>Recipes Using Wine</legend>
+          <div className="slider">
+            <div className="slides">
+              {wines.map((recipe) => {
+                const { id, name, image } = recipe;
+                return (
+                  <div key={id} className="slide">
+                    <img src={image} alt={name} style={{ width: "100%" }} />
+                    <h3 className="title-dish">{name}</h3>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </fieldset>
+      </section>
       <div className="" style={{ height: "1000px" }}></div>
     </main>
   );

@@ -155,6 +155,8 @@ button {
   padding-top: 54px;
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: 5vh;
+  background-color: rgba(88, 111, 124, 0.4);
 }
 
 .section-main-recipe {
@@ -276,8 +278,8 @@ button {
 
 /* Section Low Calorie Recipes */
 
-.section-low-calorie-recipes {
-  margin-top: 10vh;
+.section-recipe-slider {
+  margin-top: 5vh;
   height: 60vh;
   background: white;
   display: flex;
@@ -287,12 +289,23 @@ button {
   /* animation: other 2s infinite ease-in-out; */
 }
 
-.section-low-calorie-recipes fieldset {
+.section-recipe-slider fieldset {
   position: relative;
   padding: 1vw;
-  border: 2px solid lightgray;
+  border: 4px double lightgray;
   overflow: hidden;
   /* animation: example 1s infinite ease-in-out; */
+}
+
+.section-recipe-slider fieldset legend {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8px 15px;
+  text-transform: uppercase;
+  color: var(--redTone);
+  font-weight: bold;
+  font-size: 1.1em;
+  border: 4px double lightgray;
 }
 
 .slider {
@@ -344,6 +357,10 @@ button {
 
 .slide:last-child {
   margin-right: 0px;
+}
+
+.slide img {
+  object-fit: cover;
 }
 
 @keyframes other {
