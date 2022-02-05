@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect, useCallback } from "react";
 const randomUrl =
   "https://api.spoonacular.com/recipes/random?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=13";
 const lowCaloriesUrl =
-  "https://api.spoonacular.com/recipes/findByNutrients?apiKey=0d31116822b54414a5fe84f683d6d5d9&minCalories=0&maxCalories=50";
+  "https://api.spoonacular.com/recipes/findByNutrients?apiKey=0d31116822b54414a5fe84f683d6d5d9&minCalories=0&maxCalories=25";
 const noSugarUrl =
   "https://api.spoonacular.com/recipes/findByNutrients?apiKey=0d31116822b54414a5fe84f683d6d5d9&minSugar=0&maxSugar=1";
 const winesUrl =

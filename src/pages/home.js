@@ -23,12 +23,34 @@ const Home = () => {
       <div className="container">
         <section className="section-main-recipe">
           {random.length !== 0 ? (
-            random.slice(0, 1).map((recipe, index) => {
-              const { id, image, title, dishTypes } = recipe;
+            random.slice(0, 1).map((recipe) => {
+              const { id, image, title, dishTypes, instructions } = recipe;
               return (
                 <div key={id}>
                   <img src={image} alt={title} />
-                  <div className="center-text-recipe">{title}</div>
+                  <div className="center-text-recipe">
+                    <fieldset>
+                      <legend className="dish-types">
+                        {dishTypes.length === 0
+                          ? "Miscellaneous"
+                          : dishTypes.slice(0, 3).map((dish, index) => {
+                              return (
+                                <div
+                                  key={index}
+                                  style={{
+                                    display: "inline-block",
+                                  }}
+                                >
+                                  {(index ? ", " : "") + dish}
+                                </div>
+                              );
+                            })}
+                      </legend>
+                      <h2>{title}</h2>
+                      <p className="main-instructions">{instructions}</p>
+                      <button>Get the full instructions &gt;</button>
+                    </fieldset>
+                  </div>
                 </div>
               );
             })
@@ -44,8 +66,8 @@ const Home = () => {
         <section className="section-recipes">
           <div className="wrapper">
             {random.length !== 0 ? (
-              random.slice(1).map((recipe, index) => {
-                const { id, image, title, dishTypes } = recipe;
+              random.slice(1).map((recipe) => {
+                const { id, image, title, dishTypes, readyInMinutes } = recipe;
                 return (
                   <div key={id} className="box">
                     <img
@@ -54,23 +76,26 @@ const Home = () => {
                       alt={title}
                       style={{ width: "100%" }}
                     />
-                    <div className="dish-types">
-                      {dishTypes.length === 0
-                        ? "Miscellaneous"
-                        : dishTypes.slice(0, 3).map((dish, index) => {
-                            return (
-                              <div
-                                key={index}
-                                style={{
-                                  display: "inline-block",
-                                }}
-                              >
-                                {(index ? ", " : "") + dish}
-                              </div>
-                            );
-                          })}
+                    <div className="box-container">
+                      <div className="dish-types">
+                        {dishTypes.length === 0
+                          ? "Miscellaneous"
+                          : dishTypes.slice(0, 3).map((dish, index) => {
+                              return (
+                                <div
+                                  key={index}
+                                  style={{
+                                    display: "inline-block",
+                                  }}
+                                >
+                                  {(index ? ", " : "") + dish}
+                                </div>
+                              );
+                            })}
+                      </div>
+                      <h3 className="title-dish">{title}</h3>
+                      <span>{readyInMinutes}min</span>
                     </div>
-                    <h3 className="title-dish">{title}</h3>
                   </div>
                 );
               })
@@ -93,62 +118,9 @@ const Home = () => {
           </div>
         </section>
       </div>
-      <section className="section-recipe-slider">
-        <fieldset>
-          <legend>Low Calorie Recipes</legend>
-          <div className="slider">
-            <div className="slides">
-              {lowCalories.map((recipe) => {
-                const { id, title, image, calories } = recipe;
-                return (
-                  <div key={id} className="slide">
-                    <img src={image} alt={title} style={{ width: "100%" }} />
-                    <h3 className="title-dish">{title}</h3>
-                    <span>Calories: {calories}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </fieldset>
-      </section>
-      <section className="section-recipe-slider">
-        <fieldset>
-          <legend>No Sugar Recipes</legend>
-          <div className="slider">
-            <div className="slides">
-              {noSugar.map((recipe) => {
-                const { id, title, image, sugar } = recipe;
-                return (
-                  <div key={id} className="slide">
-                    <img src={image} alt={title} style={{ width: "100%" }} />
-                    <h3 className="title-dish">{title}</h3>
-                    <span>Sugar: {sugar}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </fieldset>
-      </section>
-      <section className="section-recipe-slider">
-        <fieldset>
-          <legend>Recipes Using Wine</legend>
-          <div className="slider">
-            <div className="slides">
-              {wines.map((recipe) => {
-                const { id, name, image } = recipe;
-                return (
-                  <div key={id} className="slide">
-                    <img src={image} alt={name} style={{ width: "100%" }} />
-                    <h3 className="title-dish">{name}</h3>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </fieldset>
-      </section>
+      <RecipesList legend="Low Calorie Recipes" recipes={lowCalories} />
+      <RecipesList legend="No Sugar Recipes" recipes={noSugar} />
+      <RecipesList legend="Recipes Using Wine" recipes={wines} />
       <div className="" style={{ height: "1000px" }}></div>
     </main>
   );
