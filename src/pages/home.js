@@ -1,5 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "../context";
+import { Link } from "react-router-dom";
 import preset from "../images/Cheese-Tortellini-011.jpg";
 import Preset from "../components/Preset";
 import RecipesList from "../components/RecipesList";
@@ -47,8 +48,15 @@ const Home = () => {
                             })}
                       </legend>
                       <h2>{title}</h2>
-                      <p className="main-instructions">{instructions}</p>
-                      <button>Get the full instructions &gt;</button>
+                      <p
+                        className="main-instructions"
+                        dangerouslySetInnerHTML={{
+                          __html: instructions,
+                        }}
+                      ></p>
+                      <Link to={`/recipe/${id}`}>
+                        <button>Get the full instructions &gt;</button>
+                      </Link>
                     </fieldset>
                   </div>
                 </div>
@@ -121,7 +129,6 @@ const Home = () => {
       <RecipesList legend="Low Calorie Recipes" recipes={lowCalories} />
       <RecipesList legend="No Sugar Recipes" recipes={noSugar} />
       <RecipesList legend="Recipes Using Wine" recipes={wines} />
-      <div className="" style={{ height: "1000px" }}></div>
     </main>
   );
 };
