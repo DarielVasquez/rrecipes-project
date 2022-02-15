@@ -78,32 +78,34 @@ const Home = () => {
                 const { id, image, title, dishTypes, readyInMinutes } = recipe;
                 return (
                   <div key={id} className="box">
-                    <img
-                      className="img"
-                      src={image}
-                      alt={title}
-                      style={{ width: "100%" }}
-                    />
-                    <div className="box-container">
-                      <div className="dish-types">
-                        {dishTypes.length === 0
-                          ? "Miscellaneous"
-                          : dishTypes.slice(0, 3).map((dish, index) => {
-                              return (
-                                <div
-                                  key={index}
-                                  style={{
-                                    display: "inline-block",
-                                  }}
-                                >
-                                  {(index ? ", " : "") + dish}
-                                </div>
-                              );
-                            })}
+                    <Link to={`/recipe/${id}`}>
+                      <img
+                        className="img"
+                        src={image}
+                        alt={title}
+                        style={{ width: "100%" }}
+                      />
+                      <div className="box-container">
+                        <div className="dish-types">
+                          {dishTypes.length === 0
+                            ? "Miscellaneous"
+                            : dishTypes.slice(0, 3).map((dish, index) => {
+                                return (
+                                  <div
+                                    key={index}
+                                    style={{
+                                      display: "inline-block",
+                                    }}
+                                  >
+                                    {(index ? ", " : "") + dish}
+                                  </div>
+                                );
+                              })}
+                        </div>
+                        <h3 className="title-dish">{title}</h3>
+                        <span>{readyInMinutes}min</span>
                       </div>
-                      <h3 className="title-dish">{title}</h3>
-                      <span>{readyInMinutes}min</span>
-                    </div>
+                    </Link>
                   </div>
                 );
               })

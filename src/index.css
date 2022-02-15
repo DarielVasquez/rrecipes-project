@@ -528,6 +528,10 @@ button {
   padding: 20px;
 }
 
+.single-recipe h1 {
+  font-size: 3em;
+}
+
 .single-recipe ul {
   margin: 0 20px 10px 20px;
 }
@@ -564,6 +568,34 @@ button {
   text-align: left;
   line-height: 1.5;
   color: var(--darkBlue);
+}
+
+.single-recipe-body ul {
+  list-style-type: circle;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  columns: 2;
+}
+
+@media screen and (max-width: 600px) {
+  .recipe-container {
+    padding-top: 54px;
+  }
+  .single-recipe {
+    width: 100vw;
+  }
+  .single-recipe h1 {
+    font-size: 1.7em;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 601px) {
+  .single-recipe {
+    width: 80vw;
+  }
+  .single-recipe h1 {
+    font-size: 2em;
+  }
 }
 
 /* Loading */
