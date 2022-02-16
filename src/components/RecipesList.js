@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const RecipesList = ({ legend, recipes }) => {
+  const link = legend.toLowerCase().replace(/ /g, "-");
   return (
     <section className="section-recipe-slider">
       <fieldset>
@@ -16,9 +18,9 @@ const RecipesList = ({ legend, recipes }) => {
                   <div className="dish-data">
                     {calories && <div>Calories: {calories}</div>}
                     {sugar && <div>Sugar: {sugar}</div>}
-                    <button onClick={() => console.log("xd")}>
-                      Get the Recipe &gt;
-                    </button>
+                    <Link to={`/recipes/${link}`}>
+                      <button>Get the Recipe &gt;</button>
+                    </Link>
                   </div>
                 </div>
               );

@@ -278,10 +278,10 @@ button {
 }
 
 .box:hover {
-  transform: translate(1px, 1px);
-  -moz-transform: translate(1px, 1px);
-  -webkit-transform: translate(1px, 1px);
-  outline: 5px solid var(--redTone);
+  transform: translate(5px, -5px);
+  -moz-transform: translate(5px, -5px);
+  -webkit-transform: translate(5px, -5px);
+  box-shadow: -5px 5px var(--redTone);
 }
 
 .box img {
@@ -367,8 +367,7 @@ button {
 }
 
 .section-recipe-slider fieldset legend {
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   padding: 8px 15px;
   text-transform: uppercase;
   color: var(--redTone);
@@ -378,8 +377,8 @@ button {
 }
 
 .slider {
-  width: 95vw;
-  height: 420px;
+  width: 60vw;
+  height: 450px;
   overflow: hidden;
   white-space: nowrap;
   display: flex;
@@ -410,8 +409,8 @@ button {
 .slide {
   color: var(--darkBlue);
   text-transform: capitalize;
-  width: 36vh;
-  height: 400px;
+  width: 38vh;
+  height: 425px;
 
   scroll-snap-align: start;
   flex-shrink: 0;

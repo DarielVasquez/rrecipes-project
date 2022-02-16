@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import preset from "../images/Cheese-Tortellini-011.jpg";
 import Preset from "../components/Preset";
 import RecipesList from "../components/RecipesList";
+import Score from "../components/Score";
+import { MdOutlineTimer } from "react-icons/md";
 
 const Home = () => {
   const {
@@ -75,7 +77,14 @@ const Home = () => {
           <div className="wrapper">
             {random.length !== 0 ? (
               random.slice(1).map((recipe) => {
-                const { id, image, title, dishTypes, readyInMinutes } = recipe;
+                const {
+                  id,
+                  image,
+                  title,
+                  dishTypes,
+                  readyInMinutes,
+                  spoonacularScore,
+                } = recipe;
                 return (
                   <div key={id} className="box">
                     <Link to={`/recipe/${id}`}>
@@ -103,7 +112,11 @@ const Home = () => {
                               })}
                         </div>
                         <h3 className="title-dish">{title}</h3>
-                        <span>{readyInMinutes}min</span>
+                        <span>
+                          <MdOutlineTimer />
+                          {readyInMinutes}mins
+                        </span>
+                        <Score score={spoonacularScore} />
                       </div>
                     </Link>
                   </div>
