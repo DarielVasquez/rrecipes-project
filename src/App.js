@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Error from "./pages/Error";
 import About from "./pages/About";
 import Recipe from "./pages/Recipe";
-import Recipes from "./pages/Recipes";
+import MealTypeRecipes from "./pages/MealTypeRecipes";
 // Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route path="/recipe/:id" element={<Recipe />}></Route>
-        <Route path="/recipes/:id" element={<Recipes />}></Route>
+        <Route path="/meal/:id" element={<MealTypeRecipes />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="*" element={<Error />}></Route>
       </Routes>

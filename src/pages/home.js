@@ -12,6 +12,7 @@ const Home = () => {
     recipes: { random, lowCalories, noSugar, wines },
     loading,
   } = useGlobalContext();
+  const presetArray = Array(12).fill("");
 
   console.log(random);
   console.log(lowCalories);
@@ -25,7 +26,7 @@ const Home = () => {
     <main>
       <div className="container">
         <section className="section-main-recipe">
-          {random.length !== 0 ? (
+          {random && random.length !== 0 ? (
             random.slice(0, 1).map((recipe) => {
               const { id, image, title, dishTypes, instructions } = recipe;
               return (
@@ -67,77 +68,77 @@ const Home = () => {
           ) : (
             <div>
               <img src={preset} alt="Cheese Tortellini in Creamy Marinara" />
+              <div className="center-text-recipe"></div>
               <div className="center-text-recipe">
-                Cheese Tortellini in Creamy Marinara
+                <fieldset>
+                  <legend className="dish-types">Miscellaneous</legend>
+                  <h2>Cheese Tortellini in Creamy Marinara</h2>
+                  <p className="main-instructions">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quos, soluta. Placeat, aut reiciendis saepe nisi deserunt
+                    et, dolorem repellendus vero non, repudiandae impedit. Eius
+                    rem officia nihil aliquid, dolore eveniet!
+                  </p>
+                  <Link to={`/`}>
+                    <button>Get the full instructions &gt;</button>
+                  </Link>
+                </fieldset>
               </div>
             </div>
           )}
         </section>
         <section className="section-recipes">
           <div className="wrapper">
-            {random.length !== 0 ? (
-              random.slice(1).map((recipe) => {
-                const {
-                  id,
-                  image,
-                  title,
-                  dishTypes,
-                  readyInMinutes,
-                  spoonacularScore,
-                } = recipe;
-                return (
-                  <div key={id} className="box">
-                    <Link to={`/recipe/${id}`}>
-                      <img
-                        className="img"
-                        src={image}
-                        alt={title}
-                        style={{ width: "100%" }}
-                      />
-                      <div className="box-container">
-                        <div className="dish-types">
-                          {dishTypes.length === 0
-                            ? "Miscellaneous"
-                            : dishTypes.slice(0, 3).map((dish, index) => {
-                                return (
-                                  <div
-                                    key={index}
-                                    style={{
-                                      display: "inline-block",
-                                    }}
-                                  >
-                                    {(index ? ", " : "") + dish}
-                                  </div>
-                                );
-                              })}
+            {random && random.length !== 0
+              ? random.slice(1).map((recipe) => {
+                  const {
+                    id,
+                    image,
+                    title,
+                    dishTypes,
+                    readyInMinutes,
+                    spoonacularScore,
+                  } = recipe;
+                  return (
+                    <div key={id} className="box">
+                      <Link to={`/recipe/${id}`}>
+                        <img
+                          className="img"
+                          src={image}
+                          alt={title}
+                          style={{ width: "100%" }}
+                        />
+                        <div className="box-container">
+                          <div className="dish-types">
+                            {dishTypes.length === 0
+                              ? "Miscellaneous"
+                              : dishTypes.slice(0, 3).map((dish, index) => {
+                                  return (
+                                    <div
+                                      key={index}
+                                      style={{
+                                        display: "inline-block",
+                                      }}
+                                    >
+                                      {(index ? ", " : "") + dish}
+                                    </div>
+                                  );
+                                })}
+                          </div>
+                          <h3 className="title-dish">{title}</h3>
+                          <span>
+                            <MdOutlineTimer />
+                            {readyInMinutes}mins
+                          </span>
+                          <Score score={spoonacularScore} />
                         </div>
-                        <h3 className="title-dish">{title}</h3>
-                        <span>
-                          <MdOutlineTimer />
-                          {readyInMinutes}mins
-                        </span>
-                        <Score score={spoonacularScore} />
-                      </div>
-                    </Link>
-                  </div>
-                );
-              })
-            ) : (
-              <>
-                <Preset />
-                <Preset />
-                <Preset />
-                <Preset />
-                <Preset />
-                <Preset />
-                <Preset />
-                <Preset />
-                <Preset />
-                <Preset />
-                <Preset />
-                <Preset />
-              </>
-            )}
+                      </Link>
+                    </div>
+                  );
+                })
+              : presetArray.map((preset, index) => {
+                  return <Preset key={index} />;
+                })}
           </div>
         </section>
       </div>

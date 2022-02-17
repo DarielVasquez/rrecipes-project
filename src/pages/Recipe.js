@@ -1,26 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import Loading from "../components/Loading";
+import { CgEditBlackPoint } from "react-icons/cg";
 
 const Recipe = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [recipe, setRecipe] = useState({});
+  const [steps, setSteps] = useState([]);
 
   const fetchRecipe = async () => {
     try {
-      const response = await fetch(
+      const responseRecipe = await fetch(
         `https://api.spoonacular.com/recipes/${id}/information?apiKey=0d31116822b54414a5fe84f683d6d5d9`
       );
-      const data = await response.json();
-      console.log(data);
+      const dataRecipe = await responseRecipe.json();
 
-      if (data.status === "failure") {
-        console.log(data.status);
-        setRecipe(data);
+      const responseSteps = await fetch(
+        `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=0d31116822b54414a5fe84f683d6d5d9`
+      );
+      const dataStepsExtended = await responseSteps.json();
+      const dataSteps = dataStepsExtended[0].steps;
+      console.log(dataRecipe);
+      console.log(dataSteps);
+
+      if (dataRecipe.status === "failure" || dataSteps.status === "failure") {
+        console.log(dataRecipe.status);
+        setRecipe(dataRecipe);
+        setSteps(dataSteps);
         setLoading(false);
       } else {
-        setRecipe(data);
+        setRecipe(dataRecipe);
+        setSteps(dataSteps);
         setLoading(false);
       }
     } catch (error) {
@@ -106,11 +117,11 @@ const Recipe = () => {
               ></p>
               <br />
               <h3>Ingredients: </h3>
-              <ul>
-                {extendedIngredients.map((ingredient) => {
+              <ul className="recipe-ul">
+                {extendedIngredients.map((ingredient, index) => {
                   const { id, original } = ingredient;
                   return (
-                    <li key={id}>
+                    <li key={index}>
                       <span>{original}</span>
                     </li>
                   );
@@ -118,11 +129,13 @@ const Recipe = () => {
               </ul>
               <br />
               <h3>Details: </h3>
-              <div>Gluten Free: {glutenFree ? "Yes" : "No"}</div>
-              <div>Dairy Free: {dairyFree ? "Yes" : "No"}</div>
-              <div>Vegan: {vegan ? "Yes" : "No"}</div>
-              <div>Vegetarian: {vegetarian ? "Yes" : "No"}</div>
-              <div>Healthy: {veryHealthy ? "Yes" : "No"}</div>
+              <ul className="recipe-ul">
+                <li>Gluten Free: {glutenFree ? "Yes" : "No"}</li>
+                <li>Dairy Free: {dairyFree ? "Yes" : "No"}</li>
+                <li>Vegan: {vegan ? "Yes" : "No"}</li>
+                <li>Vegetarian: {vegetarian ? "Yes" : "No"}</li>
+                <li>Healthy: {veryHealthy ? "Yes" : "No"}</li>
+              </ul>
               <br />
               <h3>Instructions: </h3>
               <p
@@ -130,6 +143,16 @@ const Recipe = () => {
                   __html: instructions,
                 }}
               ></p>
+              <br />
+              <h3>Steps: </h3>
+              {steps.map((instruction) => {
+                const { number, step } = instruction;
+                return (
+                  <div key={number}>
+                    <CgEditBlackPoint /> {step}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </article>

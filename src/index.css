@@ -349,7 +349,7 @@ button {
 .section-recipe-slider {
   margin-top: 5vh;
   height: 575px;
-  background: white;
+  /* background: white; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -361,8 +361,9 @@ button {
 .section-recipe-slider fieldset {
   position: relative;
   padding: 1vw;
-  border: 4px double lightgray;
+  border: 4px double gray;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.3);
   /* animation: example 1s infinite ease-in-out; */
 }
 
@@ -372,8 +373,9 @@ button {
   text-transform: uppercase;
   color: var(--redTone);
   font-weight: bold;
-  font-size: 1.1em;
-  border: 4px double lightgray;
+  font-size: 1.4em;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 4px double gray;
 }
 
 .slider {
@@ -407,7 +409,7 @@ button {
 }
 
 .slide {
-  color: var(--darkBlue);
+  /* color: var(--darkBlue); */
   text-transform: capitalize;
   width: 38vh;
   height: 425px;
@@ -415,12 +417,19 @@ button {
   scroll-snap-align: start;
   flex-shrink: 0;
   margin-right: 30px;
-  background: var(--lightBlue);
+  background: white;
   position: relative;
   overflow: hidden;
   /* transition: outline 0.1s ease-in-out;
   -webkit-transition: outline 0.1s ease-in-out;
   -moz-transition: outline 0.1s ease-in-out; */
+}
+
+.slide:hover {
+  transform: translate(5px, -5px);
+  -moz-transform: translate(5px, -5px);
+  -webkit-transform: translate(5px, -5px);
+  box-shadow: -5px 5px var(--redTone);
 }
 
 .slide:last-child {
@@ -436,12 +445,11 @@ button {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  background-color: var(--darkGreen);
   padding-left: 20px;
   padding-right: 20px;
   height: 10%;
-  background-color: rgba(24, 35, 40, 0.5);
-  color: white;
+  /* background-color: rgba(24, 35, 40, 0.5); */
+  /* color: white; */
   /* transition: margin-left 3s; */
 }
 
@@ -450,7 +458,7 @@ button {
   height: 30%;
   flex-direction: column;
   justify-content: end;
-  color: var(--darkBlue);
+  /* color: var(--darkBlue); */
 }
 
 .dish-data button {
@@ -571,6 +579,9 @@ button {
 
 .single-recipe-body ul {
   list-style-type: circle;
+}
+
+.recipe-ul {
   text-transform: uppercase;
   font-size: 0.9em;
   columns: 2;
@@ -595,6 +606,87 @@ button {
   .single-recipe h1 {
     font-size: 2em;
   }
+}
+
+/* Recipes Page */
+
+.multiple-recipes {
+  /* background-color: white; */
+  width: 60vw;
+  margin: auto;
+  padding: 20px;
+}
+
+.recipes-grid {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
+
+.box-item {
+  background-color: white;
+  color: var(--darkBlue);
+  text-transform: capitalize;
+  transition: outline 0.1s ease-in-out;
+  -webkit-transition: outline 0.1s ease-in-out;
+  -moz-transition: outline 0.1s ease-in-out;
+}
+
+.item-0 {
+  grid-column: 1 / 3;
+}
+
+.item-0 a {
+  display: flex;
+}
+
+.img-container-0 {
+  width: 70%;
+}
+
+.img-container-0 img {
+  height: 200px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.item-1 {
+  grid-column: 1 / 3;
+}
+
+.item-1 a {
+  display: flex;
+}
+
+.img-container-1 {
+  width: 70%;
+}
+
+.img-container-1 img {
+  height: 200px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.item-2 {
+  grid-column: 3;
+  grid-row: 1/3;
+}
+
+.img-container-2 {
+  height: 70%;
+}
+
+.img-container-2 img {
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.box-body {
+  width: 30%;
+  height: auto;
 }
 
 /* Loading */
