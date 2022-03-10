@@ -23,6 +23,8 @@ const MealTypeRecipes = () => {
         return setRecipeQuery([...noSugar]);
       case "recipes-using-wine":
         return setRecipeQuery([...wines]);
+      default:
+        return setRecipeQuery({});
     }
   }, []);
 

@@ -193,14 +193,15 @@ button {
 }
 
 .center-text-recipe fieldset {
-  border: 4px double lightgray;
+  border: 4px dotted lightgray;
+  text-transform: capitalize;
   padding: 20px;
   color: var(--darkBlue);
   cursor: default;
 }
 
 .center-text-recipe fieldset legend {
-  border: 4px double lightgray;
+  border: 4px dotted lightgray;
   word-break: normal;
   font-size: 1em;
 }
@@ -263,7 +264,7 @@ button {
   display: grid;
   grid-gap: 15px;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(6, auto);
+  grid-template-rows: repeat(6, 300px);
   grid-auto-flow: column;
 }
 
@@ -285,47 +286,55 @@ button {
 }
 
 .box img {
-  height: 50%;
+  height: 60%;
   object-fit: cover;
 }
 
 .box-container {
-  height: 50%;
+  height: 40%;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .dish-types {
-  padding: 8px 15px;
+  height: auto;
+  margin: 8px 15px;
   text-transform: uppercase;
   color: var(--redTone);
-  font-weight: bold;
   font-size: 0.9em;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
   -webkit-box-orient: vertical;
 }
 
 .title-dish {
   text-align: center;
-  padding: 5px;
+  margin: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: 400;
+  font-size: 1.4em;
+  font-family: Georgia, "Times New Roman", Times, serif;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
   -webkit-box-orient: vertical;
+}
+
+.timer {
+  margin-left: 10px;
 }
 
 @media screen and (max-width: 600px) {
   .title-dish {
     padding: 3px;
-    font-size: 1em;
   }
   .dish-types {
     padding: 5px 10px;
-    font-size: 0.7em;
   }
   .wrapper {
     grid-template-columns: repeat(1, 1fr);
@@ -336,11 +345,9 @@ button {
 @media screen and (max-width: 1024px) and (min-width: 601px) {
   .title-dish {
     padding: 4px;
-    font-size: 1.2em;
   }
   .dish-types {
     padding: 7px 12px;
-    font-size: 0.8em;
   }
 }
 
@@ -348,8 +355,8 @@ button {
 
 .section-recipe-slider {
   margin-top: 5vh;
-  height: 575px;
-  /* background: white; */
+  height: 500px;
+  background: var(--lightTextColor);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -359,29 +366,32 @@ button {
 }
 
 .section-recipe-slider fieldset {
+  /* max-width: 100%; */
   position: relative;
   padding: 1vw;
-  border: 4px double gray;
+  border: 4px dotted lightgray;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
   /* animation: example 1s infinite ease-in-out; */
 }
 
 .section-recipe-slider fieldset legend {
-  margin: auto;
+  /* margin: auto; */
   padding: 8px 15px;
   text-transform: uppercase;
-  color: var(--redTone);
-  font-weight: bold;
   font-size: 1.4em;
-  background-color: rgba(255, 255, 255, 0.3);
-  border: 4px double gray;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 4px dotted lightgray;
+}
+
+.section-recipe-slider fieldset legend a {
+  color: var(--redTone);
 }
 
 .slider {
-  width: 60vw;
-  height: 450px;
-  overflow: hidden;
+  width: 1050px;
+  max-width: 100%;
+  height: 380px;
   white-space: nowrap;
   display: flex;
 }
@@ -389,9 +399,7 @@ button {
 .slides {
   display: flex;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
+  padding: 5px;
 }
 
 .slides::-webkit-scrollbar {
@@ -409,20 +417,46 @@ button {
 }
 
 .slide {
-  /* color: var(--darkBlue); */
+  color: var(--darkBlue);
   text-transform: capitalize;
-  width: 38vh;
-  height: 425px;
+  height: 350px;
 
+  width: 31%;
+  max-width: 100%;
   scroll-snap-align: start;
   flex-shrink: 0;
   margin-right: 30px;
   background: white;
   position: relative;
   overflow: hidden;
-  /* transition: outline 0.1s ease-in-out;
+
+  transition: outline 0.1s ease-in-out;
   -webkit-transition: outline 0.1s ease-in-out;
-  -moz-transition: outline 0.1s ease-in-out; */
+  -moz-transition: outline 0.1s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+  .slider {
+    width: 90vw;
+  }
+  .slide {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 601px) {
+  .slider {
+    width: 90vw;
+  }
+  .slide {
+    width: 48%;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 1025px) {
+  .slider {
+    width: 90vw;
+  }
 }
 
 .slide:hover {
@@ -447,7 +481,6 @@ button {
   text-overflow: ellipsis;
   padding-left: 20px;
   padding-right: 20px;
-  height: 10%;
   /* background-color: rgba(24, 35, 40, 0.5); */
   /* color: white; */
   /* transition: margin-left 3s; */

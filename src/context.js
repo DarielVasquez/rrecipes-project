@@ -3,11 +3,13 @@ import React, { useState, useContext, useEffect, useCallback } from "react";
 const randomUrl =
   "https://api.spoonacular.com/recipes/random?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=13";
 const lowCaloriesUrl =
-  "https://api.spoonacular.com/recipes/findByNutrients?apiKey=0d31116822b54414a5fe84f683d6d5d9&minCalories=0&maxCalories=25";
+  "https://api.spoonacular.com/recipes/complexSearch?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=10&addRecipeInformation=true&&minCalories=0&maxCalories=25";
 const noSugarUrl =
-  "https://api.spoonacular.com/recipes/findByNutrients?apiKey=0d31116822b54414a5fe84f683d6d5d9&minSugar=0&maxSugar=1";
+  "https://api.spoonacular.com/recipes/complexSearch?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=10&addRecipeInformation=true&minSugar=0&maxSugar=1";
 const winesUrl =
-  "https://api.spoonacular.com/food/search?apiKey=0d31116822b54414a5fe84f683d6d5d9&query=wine&number=10";
+  "https://api.spoonacular.com/recipes/complexSearch?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=10&addRecipeInformation=true&query=wine";
+const queryUrl =
+  "https://api.spoonacular.com/recipes/autocomplete?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=25&query=";
 
 // const url =
 //   "https://api.spoonacular.com/recipes/complexSearch?apiKey=0d31116822b54414a5fe84f683d6d5d9";
@@ -40,13 +42,15 @@ const AppProvider = ({ children }) => {
         setLoading(false);
       } else {
         const randomRecipes = dataRandomRecipes.recipes;
-        const winesRecipes = dataWinesRecipes.searchResults[0].results;
+        const lowCalorieRecipes = dataLowCalorieRecipes.results;
+        const noSugarRecipes = dataNoSugarRecipes.results;
+        const winesRecipes = dataWinesRecipes.results;
         setRecipes((prevRecipes) => {
           return {
             ...prevRecipes,
             random: randomRecipes,
-            lowCalories: dataLowCalorieRecipes,
-            noSugar: dataNoSugarRecipes,
+            lowCalories: lowCalorieRecipes,
+            noSugar: noSugarRecipes,
             wines: winesRecipes,
           };
         });
@@ -59,6 +63,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchRecipes();
+    return () => setRecipes({});
   }, []);
 
   return (

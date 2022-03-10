@@ -17,11 +17,13 @@ const Preset = () => {
         <div className="box-container">
           <div className="dish-types">Miscellaneous</div>
           <h3 className="title-dish">Cheese Tortellini in Creamy Marinara</h3>
-          <span>
-            <MdOutlineTimer />
-            10mins
-          </span>
-          <Score score="100" />
+          <div className="timer">
+            <span>
+              <MdOutlineTimer />
+              10mins
+            </span>
+            <Score score="100" />
+          </div>
         </div>
       </Link>
     </div>

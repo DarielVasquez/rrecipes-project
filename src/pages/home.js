@@ -126,11 +126,13 @@ const Home = () => {
                                 })}
                           </div>
                           <h3 className="title-dish">{title}</h3>
-                          <span>
-                            <MdOutlineTimer />
-                            {readyInMinutes}mins
-                          </span>
-                          <Score score={spoonacularScore} />
+                          <div className="timer">
+                            <span>
+                              <MdOutlineTimer />
+                              {readyInMinutes}mins
+                            </span>
+                            <Score score={spoonacularScore} />
+                          </div>
                         </div>
                       </Link>
                     </div>
