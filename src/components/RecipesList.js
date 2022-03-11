@@ -33,23 +33,28 @@ const RecipesList = ({ legend, recipes }) => {
                         style={{ width: "100%" }}
                       />
                       <div className="box-container">
-                        <div className="dish-types">
-                          {dishTypes.length === 0
-                            ? "Miscellaneous"
-                            : dishTypes.slice(0, 3).map((dish, index) => {
-                                return (
-                                  <div
-                                    key={index}
-                                    style={{
-                                      display: "inline-block",
-                                    }}
-                                  >
-                                    {(index ? ", " : "") + dish}
-                                  </div>
-                                );
-                              })}
+                        <div className="box-wrapper">
+                          <div className="dish-types">
+                            {dishTypes.length === 0
+                              ? "Miscellaneous"
+                              : dishTypes.slice(0, 3).map((dish, index) => {
+                                  return (
+                                    <div
+                                      key={index}
+                                      style={{
+                                        display: "inline-block",
+                                      }}
+                                    >
+                                      {index ? ", " : ""}
+                                      <Link to={`/meal/${dish}`}>{dish}</Link>
+                                    </div>
+                                  );
+                                })}
+                          </div>
                         </div>
-                        <h3 className="title-dish">{title}</h3>
+                        <div className="box-wrapper">
+                          <h3 className="title-dish">{title}</h3>
+                        </div>
                         <div className="timer">
                           <span>
                             <MdOutlineTimer />
