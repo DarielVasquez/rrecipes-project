@@ -280,6 +280,7 @@ button {
   color: var(--darkBlue);
   text-transform: capitalize;
   padding-bottom: 15px;
+  position: relative;
   transition: outline 0.1s ease-in-out;
   -webkit-transition: outline 0.1s ease-in-out;
   -moz-transition: outline 0.1s ease-in-out;
@@ -307,6 +308,12 @@ button {
 
 .box-wrapper {
   margin: 8px;
+  position: relative;
+}
+
+.dish-types-container {
+  position: absolute;
+  top: 57%;
 }
 
 .dish-types {
@@ -654,6 +661,10 @@ button {
   padding: 20px;
 }
 
+.recipes-title {
+  text-transform: capitalize;
+}
+
 .recipes-grid {
   display: grid;
   grid-gap: 15px;
@@ -733,6 +744,14 @@ button {
 
 .box-body-2 {
   width: 100%;
+}
+
+.recipes-summary {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 /* Loading */
