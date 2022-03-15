@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import Score from "../components/Score";
+import NoRecipes from "../components/NoRecipes";
 import { MdOutlineTimer } from "react-icons/md";
 
 const MealTypeRecipes = () => {
@@ -41,6 +42,7 @@ const MealTypeRecipes = () => {
           case "snack":
           case "drink":
           case "antipasti":
+          case "lunch":
           case "brunch":
           case "morning meal":
           case "dip":
@@ -64,14 +66,14 @@ const MealTypeRecipes = () => {
   useEffect(() => {
     fetchRecipe();
     return () => setRecipeQuery({});
-  }, [meal]);
+  }, []);
 
   console.log(meal);
 
   if (loading) {
     return <Loading />;
   } else if (recipeQuery === undefined || recipeQuery.length === 0) {
-    return <div style={{ fontSize: "5em" }}>no recipes found</div>;
+    return <NoRecipes />;
   } else {
     return (
       <main>
@@ -80,44 +82,72 @@ const MealTypeRecipes = () => {
             <div className="recipes-title">
               <h1>{meal}</h1>
             </div>
-            <div className="recipes-grid">
-              {recipeQuery.slice(0, 3).map((recipe, index) => {
-                const {
-                  id,
-                  image,
-                  title,
-                  spoonacularScore,
-                  readyInMinutes,
-                  summary,
-                } = recipe;
-                return (
-                  <div key={id} className={`box-item item-${index}`}>
-                    <Link to={`/recipe/${id}`}>
-                      <div className={`img-container-${index}`}>
-                        <img src={image} alt={title} />
-                      </div>
-                      <div className={`box-body-${index}`}>
+            <div className="recipes-grid-container">
+              <div className="recipes-grid">
+                {recipeQuery.slice(0, 3).map((recipe, index) => {
+                  const {
+                    id,
+                    image,
+                    title,
+                    spoonacularScore,
+                    readyInMinutes,
+                    summary,
+                    dishTypes,
+                  } = recipe;
+                  return (
+                    <div key={id} className="box-item">
+                      <Link to={`/recipe/${id}`}>
+                        <div className="img-container">
+                          <img src={image} alt={title} />
+                        </div>
+                        <div className="box-body">
+                          <div className="box-wrapper-dish">
+                            <h3 className="title-dish">{title}</h3>
+                          </div>
+                          <p
+                            className="recipes-summary"
+                            dangerouslySetInnerHTML={{
+                              __html: summary,
+                            }}
+                          ></p>
+                          <div className="timer">
+                            <span>
+                              <MdOutlineTimer />
+                              {readyInMinutes}mins
+                            </span>
+                            <Score score={spoonacularScore} />
+                          </div>
+                        </div>
+                      </Link>
+                      <div className="dish-types-container-grid">
                         <div className="box-wrapper">
-                          <h3 className="title-dish">{title}</h3>
-                        </div>
-                        <p
-                          className="recipes-summary"
-                          dangerouslySetInnerHTML={{
-                            __html: summary,
-                          }}
-                        ></p>
-                        <div className="timer">
-                          <span>
-                            <MdOutlineTimer />
-                            {readyInMinutes}mins
-                          </span>
-                          <Score score={spoonacularScore} />
+                          <div className="dish-types">
+                            {dishTypes.length === 0 ? (
+                              <Link to={`/meal/miscellaneous`}>
+                                Miscellaneous
+                              </Link>
+                            ) : (
+                              dishTypes.slice(0, 3).map((dish, index) => {
+                                return (
+                                  <div
+                                    key={index}
+                                    style={{
+                                      display: "inline-block",
+                                    }}
+                                  >
+                                    {index ? ", " : ""}
+                                    <Link to={`/meal/${dish}`}>{dish}</Link>
+                                  </div>
+                                );
+                              })
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </Link>
-                  </div>
-                );
-              })}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </section>
         </div>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
+import NoRecipes from "../components/NoRecipes";
 import { CgEditBlackPoint } from "react-icons/cg";
 
 const Recipe = () => {
@@ -20,16 +22,16 @@ const Recipe = () => {
         `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=0d31116822b54414a5fe84f683d6d5d9`
       );
       const dataStepsExtended = await responseSteps.json();
-      const dataSteps = dataStepsExtended[0].steps;
       console.log(dataRecipe);
-      console.log(dataSteps);
+      console.log(dataStepsExtended);
 
-      if (dataRecipe.status === "failure" || dataSteps.status === "failure") {
+      if (dataRecipe.status === "failure") {
         console.log(dataRecipe.status);
         setRecipe(dataRecipe);
-        setSteps(dataSteps);
+        setSteps(dataStepsExtended);
         setLoading(false);
       } else {
+        const dataSteps = dataStepsExtended[0].steps;
         setRecipe(dataRecipe);
         setSteps(dataSteps);
         setLoading(false);
@@ -41,6 +43,7 @@ const Recipe = () => {
 
   useEffect(() => {
     fetchRecipe();
+    console.log(recipe);
   }, []);
 
   const {
@@ -62,10 +65,10 @@ const Recipe = () => {
     extendedIngredients,
   } = recipe;
 
-  if (recipe.status === "failure") {
-    return <div style={{ fontSize: "5em" }}>no recipe found</div>;
-  } else if (loading) {
+  if (loading) {
     return <Loading />;
+  } else if (recipe.status === "failure" || steps.status === "failure") {
+    return <NoRecipes />;
   } else
     return (
       <main>
@@ -73,21 +76,25 @@ const Recipe = () => {
           <div className="single-recipe">
             <ul>
               <span>DISH TYPES: </span>
-              {dishTypes.length === 0
-                ? "Miscellaneous"
-                : dishTypes.map((dish, index) => {
-                    return (
-                      <li
-                        key={index}
-                        style={{
-                          display: "inline-block",
-                        }}
-                        className="single-recipe-dishes"
-                      >
+              {dishTypes.length === 0 ? (
+                <Link to={`/meal/miscellaneous`}>Miscellaneous</Link>
+              ) : (
+                dishTypes.map((dish, index) => {
+                  return (
+                    <li
+                      key={index}
+                      style={{
+                        display: "inline-block",
+                      }}
+                      className="single-recipe-dishes"
+                    >
+                      <Link to={`/meal/${dish}`} style={{ color: "white" }}>
                         {dish}
-                      </li>
-                    );
-                  })}
+                      </Link>
+                    </li>
+                  );
+                })
+              )}
             </ul>
             <h1>{title}</h1>
             <h3>

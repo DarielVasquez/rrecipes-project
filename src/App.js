@@ -14,13 +14,15 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route exact path="/" element={<Home />}></Route>
-        <Route path="/recipe/:id" element={<Recipe />}></Route>
-        <Route path="/meal/:meal" element={<MealTypeRecipes />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="*" element={<Error />}></Route>
-      </Routes>
+      <div className="body-wrapper">
+        <Routes>
+          <Route exact path="/" element={<Home />}></Route>
+          <Route path="/recipe/:id" element={<Recipe />}></Route>
+          <Route path="/meal/:meal" element={<MealTypeRecipes />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="*" element={<Error />}></Route>
+        </Routes>
+      </div>
       <Footer />
     </Router>
   );

@@ -30,26 +30,28 @@ const Home = () => {
             random.slice(0, 1).map((recipe) => {
               const { id, image, title, dishTypes, instructions } = recipe;
               return (
-                <div key={id}>
+                <div key={id} className="main-recipe-container">
                   <img src={image || preset} alt={title} />
                   <div className="center-text-recipe">
                     <fieldset>
                       <legend className="dish-types">
-                        {dishTypes.length === 0
-                          ? "Miscellaneous"
-                          : dishTypes.slice(0, 3).map((dish, index) => {
-                              return (
-                                <div
-                                  key={index}
-                                  style={{
-                                    display: "inline-block",
-                                  }}
-                                >
-                                  {index ? ", " : ""}
-                                  <Link to={`/meal/${dish}`}>{dish}</Link>
-                                </div>
-                              );
-                            })}
+                        {dishTypes.length === 0 ? (
+                          <Link to={`/meal/miscellaneous`}>Miscellaneous</Link>
+                        ) : (
+                          dishTypes.slice(0, 3).map((dish, index) => {
+                            return (
+                              <div
+                                key={index}
+                                style={{
+                                  display: "inline-block",
+                                }}
+                              >
+                                {index ? ", " : ""}
+                                <Link to={`/meal/${dish}`}>{dish}</Link>
+                              </div>
+                            );
+                          })
+                        )}
                       </legend>
                       <Link to={`/recipe/${id}`}>
                         <h2>{title}</h2>
@@ -71,10 +73,11 @@ const Home = () => {
           ) : (
             <div>
               <img src={preset} alt="Cheese Tortellini in Creamy Marinara" />
-              <div className="center-text-recipe"></div>
               <div className="center-text-recipe">
                 <fieldset>
-                  <legend className="dish-types">Miscellaneous</legend>
+                  <legend className="dish-types">
+                    <a>Miscellaneous</a>
+                  </legend>
                   <h2>Cheese Tortellini in Creamy Marinara</h2>
                   <p className="main-instructions">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -113,25 +116,6 @@ const Home = () => {
                         />
                         <div className="box-container">
                           <div className="box-wrapper">
-                            <div className="dish-types">
-                              {dishTypes.length === 0
-                                ? "Miscellaneous"
-                                : dishTypes.slice(0, 3).map((dish, index) => {
-                                    return (
-                                      <div
-                                        key={index}
-                                        style={{
-                                          display: "inline-block",
-                                        }}
-                                      >
-                                        {index ? ", " : ""}
-                                        <Link to={`/meal/${dish}`}>{dish}</Link>
-                                      </div>
-                                    );
-                                  })}
-                            </div>
-                          </div>
-                          <div className="box-wrapper">
                             <h3 className="title-dish">{title}</h3>
                           </div>
                           <div className="timer">
@@ -143,6 +127,31 @@ const Home = () => {
                           </div>
                         </div>
                       </Link>
+                      <div className="dish-types-container">
+                        <div className="box-wrapper">
+                          <div className="dish-types">
+                            {dishTypes.length === 0 ? (
+                              <Link to={`/meal/miscellaneous`}>
+                                Miscellaneous
+                              </Link>
+                            ) : (
+                              dishTypes.slice(0, 3).map((dish, index) => {
+                                return (
+                                  <div
+                                    key={index}
+                                    style={{
+                                      display: "inline-block",
+                                    }}
+                                  >
+                                    {index ? ", " : ""}
+                                    <Link to={`/meal/${dish}`}>{dish}</Link>
+                                  </div>
+                                );
+                              })
+                            )}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   );
                 })

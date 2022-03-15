@@ -34,25 +34,6 @@ const RecipesList = ({ legend, recipes }) => {
                       />
                       <div className="box-container">
                         <div className="box-wrapper">
-                          <div className="dish-types">
-                            {dishTypes.length === 0
-                              ? "Miscellaneous"
-                              : dishTypes.slice(0, 3).map((dish, index) => {
-                                  return (
-                                    <div
-                                      key={index}
-                                      style={{
-                                        display: "inline-block",
-                                      }}
-                                    >
-                                      {index ? ", " : ""}
-                                      <Link to={`/meal/${dish}`}>{dish}</Link>
-                                    </div>
-                                  );
-                                })}
-                          </div>
-                        </div>
-                        <div className="box-wrapper">
                           <h3 className="title-dish">{title}</h3>
                         </div>
                         <div className="timer">
@@ -64,6 +45,34 @@ const RecipesList = ({ legend, recipes }) => {
                         </div>
                       </div>
                     </Link>
+                    <div
+                      className="dish-types-container"
+                      style={{ top: "60%" }}
+                    >
+                      <div className="box-wrapper">
+                        <div className="dish-types">
+                          {dishTypes.length === 0 ? (
+                            <Link to={`/meal/miscellaneous`}>
+                              Miscellaneous
+                            </Link>
+                          ) : (
+                            dishTypes.slice(0, 3).map((dish, index) => {
+                              return (
+                                <div
+                                  key={index}
+                                  style={{
+                                    display: "inline-block",
+                                  }}
+                                >
+                                  {index ? ", " : ""}
+                                  <Link to={`/meal/${dish}`}>{dish}</Link>
+                                </div>
+                              );
+                            })
+                          )}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 );
               })}

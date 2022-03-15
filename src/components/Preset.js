@@ -15,8 +15,9 @@ const Preset = () => {
           style={{ width: "100%" }}
         />
         <div className="box-container">
-          <div className="dish-types">Miscellaneous</div>
-          <h3 className="title-dish">Cheese Tortellini in Creamy Marinara</h3>
+          <div className="box-wrapper">
+            <h3 className="title-dish">Cheese Tortellini in Creamy Marinara</h3>
+          </div>
           <div className="timer">
             <span>
               <MdOutlineTimer />
@@ -26,6 +27,13 @@ const Preset = () => {
           </div>
         </div>
       </Link>
+      <div className="dish-types-container">
+        <div className="box-wrapper">
+          <div className="dish-types">
+            <Link to={`/meal/miscellaneous`}>Miscellaneous</Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
