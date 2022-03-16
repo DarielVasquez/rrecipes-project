@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SearchForm from "./SearchForm";
 
 const Navbar = () => {
   return (
@@ -13,17 +14,7 @@ const Navbar = () => {
             <Link to="/about">About</Link>
           </li>
         </ul>
-        <form role="search" className="search">
-          <label htmlFor="search">Search for stuff</label>
-          <input
-            id="search"
-            type="search"
-            placeholder="Search..."
-            autoFocus
-            required
-          />
-          <button type="submit">Go</button>
-        </form>
+        <SearchForm />
       </div>
     </nav>
   );
