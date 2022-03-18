@@ -4,6 +4,7 @@ import Loading from "../components/Loading";
 import Score from "../components/Score";
 import NoRecipes from "../components/NoRecipes";
 import { MdOutlineTimer } from "react-icons/md";
+import preset from "../images/Cheese-Tortellini-011.jpg";
 
 const MealTypeRecipes = () => {
   const { meal } = useParams();
@@ -65,8 +66,7 @@ const MealTypeRecipes = () => {
 
   useEffect(() => {
     fetchRecipe();
-    return () => setRecipeQuery({});
-  }, []);
+  }, [meal]);
 
   console.log(meal);
 
@@ -120,6 +120,70 @@ const MealTypeRecipes = () => {
                         </div>
                       </Link>
                       <div className="dish-types-container-grid">
+                        <div className="box-wrapper">
+                          <div className="dish-types">
+                            {dishTypes.length === 0 ? (
+                              <Link to={`/meal/miscellaneous`}>
+                                Miscellaneous
+                              </Link>
+                            ) : (
+                              dishTypes.slice(0, 3).map((dish, index) => {
+                                return (
+                                  <div
+                                    key={index}
+                                    // style={{
+                                    //   display: "inline-block",
+                                    // }}
+                                  >
+                                    {index ? ", " : ""}
+                                    <Link to={`/meal/${dish}`}>{dish}</Link>
+                                  </div>
+                                );
+                              })
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="recipes-grid-container">
+              <div className="recipes-grid">
+                {recipeQuery.slice(3).map((recipe, index) => {
+                  const {
+                    id,
+                    image,
+                    title,
+                    spoonacularScore,
+                    readyInMinutes,
+                    summary,
+                    dishTypes,
+                  } = recipe;
+                  return (
+                    <div key={id} className="box">
+                      <Link to={`/recipe/${id}`}>
+                        <img
+                          className="img"
+                          src={image || preset}
+                          alt={title}
+                          style={{ width: "100%" }}
+                        />
+                        <div className="box-container">
+                          <div className="box-wrapper">
+                            <h3 className="title-dish">{title}</h3>
+                          </div>
+                          <div className="timer">
+                            <span>
+                              <MdOutlineTimer />
+                              {readyInMinutes}mins
+                            </span>
+                            <Score score={spoonacularScore} />
+                          </div>
+                        </div>
+                      </Link>
+                      <div className="dish-types-container">
                         <div className="box-wrapper">
                           <div className="dish-types">
                             {dishTypes.length === 0 ? (
