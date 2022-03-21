@@ -8,7 +8,7 @@ const SearchForm = () => {
   const searchValue = useRef("");
   const clickValue = useRef("");
   const queryUrl =
-    "https://api.spoonacular.com/recipes/autocomplete?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=6&query=";
+    "https://api.spoonacular.com/recipes/autocomplete?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=9&query=";
 
   const fetchQuery = useCallback(async () => {
     setShowResults(false);
@@ -33,23 +33,10 @@ const SearchForm = () => {
   useEffect(() => {
     fetchQuery();
     searchValue.current.focus();
-    function handleClickOutside(event) {
-      if (clickValue.current && !clickValue.current.contains(event.target)) {
-        setShowResults(false);
-      }
-    }
-    const handleClickInside = (event) => {
-      if (clickValue.current && clickValue.current.contains(event.target)) {
-        if (query.length !== 0) setShowResults(true);
-        else setShowResults(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("mousedown", handleClickInside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("mousedown", handleClickInside);
-    };
+    // return () => {
+    //   document.removeEventListener("mousedown", handleClickOutside);
+    //   document.removeEventListener("mousedown", handleClickInside);
+    // };
   }, [searchTerm, fetchQuery]);
 
   const handleSubmit = (e) => {
@@ -59,12 +46,30 @@ const SearchForm = () => {
     console.log(showResults);
   };
 
+  const handleClickOutside = (event) => {
+    if (clickValue.current && !clickValue.current.contains(event.target)) {
+      setShowResults(false);
+    }
+  };
+  const handleClickInside = (event) => {
+    if (clickValue.current && clickValue.current.contains(event.target)) {
+      if (query.length !== 0) {
+        setShowResults(true);
+      } else {
+        setShowResults(false);
+      }
+    }
+  };
+  document.addEventListener("mousedown", handleClickOutside);
+  document.addEventListener("mousedown", handleClickInside);
+
   return (
     <form
       role="search"
       className="search"
       onSubmit={handleSubmit}
       ref={clickValue}
+      autoComplete="off"
     >
       <input
         id="search"
@@ -76,7 +81,12 @@ const SearchForm = () => {
       <button>Search</button>
       <div
         className={
-          showResults ? "search-results show-results" : "search-results"
+          showResults
+            ? `search-results show-results ${
+                (query.length < 7 && query.length >= 4 && "four-to-six") ||
+                (query.length < 4 && query.length >= 1 && "one-to-three")
+              }`
+            : `search-results`
         }
       >
         {query.map((recipe, index) => {

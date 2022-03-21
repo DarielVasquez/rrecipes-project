@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import NoRecipes from "../components/NoRecipes";
 import { CgEditBlackPoint } from "react-icons/cg";
+import { MdOutlineCheck, MdOutlineClose } from "react-icons/md";
 
 const Recipe = () => {
   const { id } = useParams();
@@ -110,23 +111,44 @@ const Recipe = () => {
               />
               <figcaption>Source: {sourceName}</figcaption>
             </figure>
-            <span>${pricePerServing}</span>
-            <br />
-            <span>{readyInMinutes} minutes</span>
-            <br />
-            <span>Total Servings: {servings}</span>
+            <div className="info-box">
+              <span>Cost: ${pricePerServing}</span>
+              <span>Time: {readyInMinutes} minutes</span>
+              <span>Total Servings: {servings}</span>
+            </div>
             <div className="single-recipe-body">
-              <h3>Summary: </h3>
+              <h3>Details</h3>
+              <ul className="recipe-ul">
+                <li>
+                  Gluten Free:{" "}
+                  {glutenFree ? <MdOutlineCheck /> : <MdOutlineClose />}
+                </li>
+                <li>
+                  Dairy Free:{" "}
+                  {dairyFree ? <MdOutlineCheck /> : <MdOutlineClose />}
+                </li>
+                <li>
+                  Vegan: {vegan ? <MdOutlineCheck /> : <MdOutlineClose />}
+                </li>
+                <li>
+                  Vegetarian:{" "}
+                  {vegetarian ? <MdOutlineCheck /> : <MdOutlineClose />}
+                </li>
+                <li>
+                  Healthy:{" "}
+                  {veryHealthy ? <MdOutlineCheck /> : <MdOutlineClose />}
+                </li>
+              </ul>
+              <h3>Summary </h3>
               <p
                 dangerouslySetInnerHTML={{
                   __html: summary,
                 }}
               ></p>
-              <br />
-              <h3>Ingredients: </h3>
+              <h3>Ingredients </h3>
               <ul className="recipe-ul">
                 {extendedIngredients.map((ingredient, index) => {
-                  const { id, original } = ingredient;
+                  const { id, original, image } = ingredient;
                   return (
                     <li key={index}>
                       <span>{original}</span>
@@ -134,24 +156,13 @@ const Recipe = () => {
                   );
                 })}
               </ul>
-              <br />
-              <h3>Details: </h3>
-              <ul className="recipe-ul">
-                <li>Gluten Free: {glutenFree ? "Yes" : "No"}</li>
-                <li>Dairy Free: {dairyFree ? "Yes" : "No"}</li>
-                <li>Vegan: {vegan ? "Yes" : "No"}</li>
-                <li>Vegetarian: {vegetarian ? "Yes" : "No"}</li>
-                <li>Healthy: {veryHealthy ? "Yes" : "No"}</li>
-              </ul>
-              <br />
-              <h3>Instructions: </h3>
+              {/* <h3>Instructions </h3>
               <p
                 dangerouslySetInnerHTML={{
                   __html: instructions,
                 }}
-              ></p>
-              <br />
-              <h3>Steps: </h3>
+              ></p> */}
+              <h3>Steps </h3>
               {steps.map((instruction) => {
                 const { number, step } = instruction;
                 return (

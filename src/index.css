@@ -19,6 +19,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* outline: solid 1px red; */
 }
 
 body {
@@ -171,9 +172,19 @@ button {
   display: grid;
   grid-gap: 15px;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 200px);
+  grid-template-rows: repeat(3, 200px);
   grid-auto-flow: column;
   visibility: hidden;
+}
+
+.four-to-six {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 200px);
+}
+
+.one-to-three {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 200px);
 }
 
 .show-results {
@@ -182,10 +193,13 @@ button {
 }
 
 .search-card {
-  outline: var(--lightBlue) 1px solid;
   text-align: center;
   background-color: white;
   cursor: pointer;
+}
+
+.search-card:hover {
+  background-color: rgba(88, 111, 124, 0.5);
 }
 
 .search-img {
@@ -197,14 +211,15 @@ button {
 .search-card h3 {
   text-transform: capitalize;
   font-weight: 100;
-  font-size: 1.5em;
-  padding: 5px;
-  color: gray;
+  font-size: 1.3em;
+  padding: 12px;
+  color: var(--darkBlue);
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 /* Home */
@@ -212,6 +227,7 @@ button {
 main {
   padding-bottom: 15vh;
   height: 100%;
+  /* margin: auto; */
 }
 
 .container {
@@ -677,6 +693,7 @@ main {
 /* Recipe Page */
 
 .recipe-container {
+  position: relative;
   padding-top: 100px;
 }
 
@@ -723,21 +740,53 @@ main {
   height: 100%;
 }
 
+.info-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-box span {
+  background-color: gray;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+  color: white;
+}
+
 .single-recipe-body {
   font-size: 1.1em;
-  margin: 25px;
+  margin: 0 40px 40px 40px;
   text-align: left;
   line-height: 1.5;
   color: var(--darkBlue);
+  height: 100%;
 }
 
 .single-recipe-body ul {
   list-style-type: circle;
 }
 
+.single-recipe-body h3 {
+  font-size: 1.3em;
+  padding: 5px 0;
+  border-bottom: 1px solid #bbb;
+  margin: 25px 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.single-recipe-body p a {
+  color: rgba(88, 111, 124, 0.7);
+}
+
 .recipe-ul {
   text-transform: uppercase;
   font-size: 0.9em;
+  columns: 1;
+}
+
+.recipe-ul:first-of-type {
   columns: 2;
 }
 
@@ -746,10 +795,16 @@ main {
     padding-top: 54px;
   }
   .single-recipe {
-    width: 100vw;
+    width: 100%;
   }
   .single-recipe h1 {
     font-size: 1.7em;
+  }
+  .recipe-ul:first-of-type {
+    columns: 1;
+  }
+  .info-box {
+    flex-direction: column;
   }
 }
 
