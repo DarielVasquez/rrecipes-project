@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/recipe-react-project/static/css/main.a26fbe94.css",
+    "main.js": "/recipe-react-project/static/js/main.b5aecb71.js",
+    "static/media/Cheese-Tortellini-011.jpg": "/recipe-react-project/static/media/Cheese-Tortellini-011.15ac6a7cb34f0167e3ff.jpg",
+    "index.html": "/recipe-react-project/index.html",
+    "main.a26fbe94.css.map": "/recipe-react-project/static/css/main.a26fbe94.css.map",
+    "main.b5aecb71.js.map": "/recipe-react-project/static/js/main.b5aecb71.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a26fbe94.css",
+    "static/js/main.b5aecb71.js"
+  ]
+}
