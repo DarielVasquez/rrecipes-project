@@ -23,6 +23,7 @@ const Recipe = () => {
         `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=0d31116822b54414a5fe84f683d6d5d9`
       );
       const dataStepsExtended = await responseSteps.json();
+
       console.log(dataRecipe);
       console.log(dataStepsExtended);
 
@@ -32,7 +33,7 @@ const Recipe = () => {
         setSteps(dataStepsExtended);
         setLoading(false);
       } else {
-        const dataSteps = dataStepsExtended[0].steps;
+        const dataSteps = dataStepsExtended.length === 0 ? dataStepsExtended : dataStepsExtended[0].steps;
         setRecipe(dataRecipe);
         setSteps(dataSteps);
         setLoading(false);
@@ -163,7 +164,7 @@ const Recipe = () => {
                 }}
               ></p> */}
               <h3>Steps </h3>
-              {steps.map((instruction) => {
+              {steps.length === 0 ? <div>Uknown... (Check Summary)</div> : steps.map((instruction) => {
                 const { number, step } = instruction;
                 return (
                   <div key={number}>
