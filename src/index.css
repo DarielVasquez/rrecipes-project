@@ -94,6 +94,7 @@ a {
 }
 
 .nav-links a {
+  font-family: "Lobster", cursive;
   text-transform: capitalize;
   display: inline-block;
   font-weight: bold;
@@ -107,6 +108,20 @@ a {
 
 .nav-links a:hover {
   color: var(--lightBlue);
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    height: auto;
+    padding: 0.5em;
+  }
+  .center-navbar {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .nav-links a {
+    padding: 0.5rem 0.5rem;
+  }
 }
 
 /* Search Bar */
@@ -220,6 +235,24 @@ button {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+@media screen and (max-width: 768px) {
+  .search-results {
+    display: flex;
+    flex-direction: column;
+  }
+  .search-card {
+    display: flex;
+    flex-direction: row;
+  }
+  .search-img {
+    height: 40px;
+  }
+  .search-card h3 {
+    font-size: 1em;
+    padding: 8px;
+  }
 }
 
 /* Home */
@@ -983,14 +1016,6 @@ main {
   }
 }
 
-/* About */
-
-.about {
-  /* font-size: 5em; */
-  text-align: center;
-  padding-top: 20vh;
-}
-
 /* Loading */
 
 .loading {
@@ -1067,7 +1092,47 @@ main {
   color: white;
   text-align: center;
   padding: 4vh;
-  bottom: 0;
-  position: absolute;
   width: 100%;
+  font-family: "Lobster", cursive;
+}
+
+/* About */
+
+.about {
+  text-align: center;
+  padding-top: 15vh;
+}
+
+.about-container {
+  background-color: white;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.about-title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  font-family: "Lobster", cursive;
+}
+
+.about-text {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #555;
+  text-align: start;
+}
+
+.about-subtitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: "Lobster", cursive;
+}
+
+.about-li {
+  list-style-type: circle;
 }
