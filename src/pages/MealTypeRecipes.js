@@ -10,7 +10,6 @@ const MealTypeRecipes = () => {
   const { meal } = useParams();
   const [loading, setLoading] = useState(true);
   const [recipeQuery, setRecipeQuery] = useState([]);
-
   // const url =
   //   `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=10&addRecipeInformation=true&&minCalories=0&maxCalories=25`;
 

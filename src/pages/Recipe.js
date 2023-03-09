@@ -18,7 +18,6 @@ const Recipe = () => {
         `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
       );
       const dataRecipe = await responseRecipe.json();
-
       const responseSteps = await fetch(
         `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${process.env.REACT_APP_API_KEY}`
       );
