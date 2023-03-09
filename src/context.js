@@ -1,16 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 
-const randomUrl =
-  "https://api.spoonacular.com/recipes/random?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=13";
-const lowCaloriesUrl =
-  "https://api.spoonacular.com/recipes/complexSearch?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=10&addRecipeInformation=true&&minCalories=0&maxCalories=25";
-const noSugarUrl =
-  "https://api.spoonacular.com/recipes/complexSearch?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=10&addRecipeInformation=true&minSugar=0&maxSugar=1";
-const winesUrl =
-  "https://api.spoonacular.com/recipes/complexSearch?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=10&addRecipeInformation=true&query=wine";
+const randomUrl = `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=13`;
+const lowCaloriesUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=10&addRecipeInformation=true&&minCalories=0&maxCalories=25`;
+const noSugarUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=10&addRecipeInformation=true&minSugar=0&maxSugar=1`;
+const winesUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=10&addRecipeInformation=true&query=wine`;
 
 // const url =
-//   "https://api.spoonacular.com/recipes/complexSearch?apiKey=0d31116822b54414a5fe84f683d6d5d9";
+//   `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}`;
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
