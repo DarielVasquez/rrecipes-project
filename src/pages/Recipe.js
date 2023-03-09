@@ -15,12 +15,12 @@ const Recipe = () => {
   const fetchRecipe = async () => {
     try {
       const responseRecipe = await fetch(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=0d31116822b54414a5fe84f683d6d5d9`
+        `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
       );
       const dataRecipe = await responseRecipe.json();
 
       const responseSteps = await fetch(
-        `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=0d31116822b54414a5fe84f683d6d5d9`
+        `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${process.env.REACT_APP_API_KEY}`
       );
       const dataStepsExtended = await responseSteps.json();
 
@@ -33,7 +33,10 @@ const Recipe = () => {
         setSteps(dataStepsExtended);
         setLoading(false);
       } else {
-        const dataSteps = dataStepsExtended.length === 0 ? dataStepsExtended : dataStepsExtended[0].steps;
+        const dataSteps =
+          dataStepsExtended.length === 0
+            ? dataStepsExtended
+            : dataStepsExtended[0].steps;
         setRecipe(dataRecipe);
         setSteps(dataSteps);
         setLoading(false);
@@ -164,14 +167,18 @@ const Recipe = () => {
                 }}
               ></p> */}
               <h3>Steps </h3>
-              {steps.length === 0 ? <div>Uknown... (Check Summary)</div> : steps.map((instruction) => {
-                const { number, step } = instruction;
-                return (
-                  <div key={number}>
-                    <CgEditBlackPoint /> {step}
-                  </div>
-                );
-              })}
+              {steps.length === 0 ? (
+                <div>Uknown... (Check Summary)</div>
+              ) : (
+                steps.map((instruction) => {
+                  const { number, step } = instruction;
+                  return (
+                    <div key={number}>
+                      <CgEditBlackPoint /> {step}
+                    </div>
+                  );
+                })
+              )}
             </div>
           </div>
         </article>

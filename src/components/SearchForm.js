@@ -7,8 +7,7 @@ const SearchForm = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const searchValue = useRef("");
   const clickValue = useRef("");
-  const queryUrl =
-    "https://api.spoonacular.com/recipes/autocomplete?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=9&query=";
+  const queryUrl = `https://api.spoonacular.com/recipes/autocomplete?apiKey=${process.env.REACT_APP_API_KEY}&number=9&query=`;
 
   const fetchQuery = useCallback(async () => {
     setShowResults(false);

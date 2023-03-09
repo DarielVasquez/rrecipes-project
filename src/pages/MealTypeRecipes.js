@@ -12,12 +12,12 @@ const MealTypeRecipes = () => {
   const [recipeQuery, setRecipeQuery] = useState([]);
 
   // const url =
-  //   "https://api.spoonacular.com/recipes/complexSearch?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=10&addRecipeInformation=true&&minCalories=0&maxCalories=25";
+  //   `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=10&addRecipeInformation=true&&minCalories=0&maxCalories=25`;
 
   const fetchRecipe = async () => {
     try {
       const responseRecipes = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=0d31116822b54414a5fe84f683d6d5d9&number=15&addRecipeInformation=true&type=${meal}`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=15&addRecipeInformation=true&type=${meal}`
       );
       const dataRecipes = await responseRecipes.json();
       const dataMealRecipes = dataRecipes.results;
