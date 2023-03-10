@@ -137,7 +137,8 @@ a {
 
 @media screen and (max-width: 1366px) {
   .search {
-    width: fit-content;
+    /* width: fit-content; */
+    width: 70vw;
   }
 }
 
@@ -241,13 +242,16 @@ button {
   .search-results {
     display: flex;
     flex-direction: column;
+    grid-gap: 5px;
   }
   .search-card {
     display: flex;
     flex-direction: row;
+    background-color: transparent;
+    border-bottom: 0.5px dashed var(--lightBlue);
   }
   .search-img {
-    height: 40px;
+    display: none;
   }
   .search-card h3 {
     font-size: 1em;
