@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
@@ -12,7 +12,7 @@ const Recipe = () => {
   const [recipe, setRecipe] = useState({});
   const [steps, setSteps] = useState([]);
 
-  const fetchRecipe = async () => {
+  const fetchRecipe = useCallback(async () => {
     try {
       const responseRecipe = await fetch(
         `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
@@ -23,11 +23,7 @@ const Recipe = () => {
       );
       const dataStepsExtended = await responseSteps.json();
 
-      console.log(dataRecipe);
-      console.log(dataStepsExtended);
-
       if (dataRecipe.status === "failure") {
-        console.log(dataRecipe.status);
         setRecipe(dataRecipe);
         setSteps(dataStepsExtended);
         setLoading(false);
@@ -43,12 +39,11 @@ const Recipe = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchRecipe();
-    console.log(recipe);
-  }, []);
+  }, [fetchRecipe]);
 
   const {
     dishTypes,

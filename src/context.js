@@ -31,7 +31,6 @@ const AppProvider = ({ children }) => {
       //Fetch No Alcohol Recipes
       const dataWinesRecipes = await fetchData(winesUrl);
       if (dataRandomRecipes.status === "failure") {
-        console.log(dataRandomRecipes.status);
         setLoading(false);
       } else {
         const randomRecipes = dataRandomRecipes.recipes;

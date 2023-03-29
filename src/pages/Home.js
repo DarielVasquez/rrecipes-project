@@ -14,11 +14,6 @@ const Home = () => {
   } = useGlobalContext();
   const presetArray = Array(12).fill("");
 
-  console.log(random);
-  console.log(lowCalories);
-  console.log(noSugar);
-  console.log(wines);
-
   if (loading) {
     return <div>loading...</div>;
   }

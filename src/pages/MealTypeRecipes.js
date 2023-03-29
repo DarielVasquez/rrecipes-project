@@ -20,9 +20,7 @@ const MealTypeRecipes = () => {
       );
       const dataRecipes = await responseRecipes.json();
       const dataMealRecipes = dataRecipes.results;
-      console.log(dataMealRecipes);
       if (dataRecipes.status === "failure") {
-        console.log(dataRecipes.status);
         setRecipeQuery(dataMealRecipes);
         setLoading(false);
       } else {
@@ -66,8 +64,6 @@ const MealTypeRecipes = () => {
   useEffect(() => {
     fetchRecipe();
   }, [meal]);
-
-  console.log(meal);
 
   if (loading) {
     return <Loading />;

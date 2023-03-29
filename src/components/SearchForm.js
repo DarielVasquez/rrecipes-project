@@ -19,7 +19,6 @@ const SearchForm = () => {
       if (data.status === "failure") {
         console.log(data.status);
       } else {
-        console.log(data);
         setQuery(data);
         if (data.length !== 0) {
           setShowResults(true);
@@ -43,7 +42,6 @@ const SearchForm = () => {
     setSearchTerm(searchValue.current.value);
 
     e.preventDefault();
-    console.log(showResults);
   };
 
   const handleClickOutside = (event) => {
