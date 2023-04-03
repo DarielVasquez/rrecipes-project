@@ -50,7 +50,7 @@ const About = () => {
         <br />
         <h2 className="about-subtitle">Future Development</h2>
         <p className="about-text">
-          In the future, I plan to add additional features to [Project Name],
+          In the future, I plan to add additional features to Recipes,
           including:
           <ul>
             <li className="about-li">
