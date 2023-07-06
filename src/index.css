@@ -460,6 +460,7 @@ main {
   height: 40%;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   width: 100%;
   overflow: hidden;
   padding-top: 35px;
@@ -902,7 +903,6 @@ main {
   padding-bottom: 15px;
   position: relative;
   min-height: 300px;
-  max-height: 310px;
 }
 
 .box-item {
