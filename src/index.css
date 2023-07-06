@@ -533,7 +533,8 @@ main {
     top: 59%;
   }
   .timer {
-    display: none;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -828,9 +829,6 @@ main {
 }
 
 @media screen and (max-width: 600px) {
-  .recipe-container {
-    padding-top: 54px;
-  }
   .single-recipe {
     width: 100%;
   }
@@ -839,6 +837,9 @@ main {
   }
   .recipe-ul:first-of-type {
     columns: 1;
+  }
+  .single-recipe-body {
+    margin: 0 20px 20px 20px;
   }
   .info-box {
     flex-direction: column;
@@ -900,6 +901,8 @@ main {
   text-transform: capitalize;
   padding-bottom: 15px;
   position: relative;
+  min-height: 300px;
+  max-height: 310px;
 }
 
 .box-item {
@@ -935,7 +938,7 @@ main {
   }
 
   .box-item:last-child .dish-types-container-grid {
-    top: 70% !important;
+    top: 66% !important;
   }
 }
 
@@ -989,6 +992,7 @@ main {
 .box-item:last-child a .box-body {
   margin-top: 10px;
   width: 100%;
+  padding-bottom: 10px;
 }
 
 .box-wrapper-dish {
