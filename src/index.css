@@ -439,6 +439,7 @@ main {
   text-transform: capitalize;
   padding-bottom: 15px;
   position: relative;
+  overflow-x: hidden;
   transition: box-shadow 0.1s ease-in-out, transform 0.1s ease-in-out;
   -webkit-transition: box-shadow 0.1s ease-in-out, transform 0.1s ease-in-out;
   -moz-transition: box-shadow 0.1s ease-in-out, transform 0.1s ease-in-out;
@@ -902,7 +903,7 @@ main {
   text-transform: capitalize;
   padding-bottom: 15px;
   position: relative;
-  min-height: 300px;
+  min-height: 275px;
 }
 
 .box-item {
